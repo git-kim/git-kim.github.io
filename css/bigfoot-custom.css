@@ -1,6 +1,25 @@
 .bigfoot-footnote__button {
   font-size: 0.85em;
+  width: 2em;
+  text-align: center;
+  padding: 0;
 }
+.bigfoot-footnote__button:active {
+  text-align: center;
+}
+.bigfoot-footnote__button::after {
+  text-align: center;
+  top: 0;
+  left: 0;
+  font-size: 0.85em;
+  font-weight: normal;
+  padding: 0;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  position: relative;
+}
+
 .bigfoot-footnote__content p {
   font-size: 0.95em !important;
   font-weight: 400 !important;
@@ -10,20 +29,20 @@
   font-weight: 400 !important;
 }
 
+.bigfoot-footnote__wrapper {
+  border-radius: 0.2em;
+}
+
 .bigfoot-footnote__content {
   padding: 0em 1em 0em;
   margin: 1em 0em 1em;
 }
+.bigfoot-footnote {
+  border-radius: 0.2em;
+}
 .bigfoot-footnote__tooltip {
-  margin-left: -0.1em;
-  margin-bottom: -0.38em;
-  margin-top: -0.2em;
-  width: 0.2em;
-  height: 2.5em;
-  -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-          transform: rotate(0deg);
-  background: #6e6e6e;
-  border: 0px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+  width: 1.1em;
+  height: 1.1em;
 }
