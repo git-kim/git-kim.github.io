@@ -1,0 +1,11 @@
+#loadDisqusButton {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 4px auto 4px;
+  cursor: pointer;
+}

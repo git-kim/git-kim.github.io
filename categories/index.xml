@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on T. K.</title>
+    <link>https://git-kim.github.io/categories/</link>
+    <description>Recent content in Categories on T. K.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Aug 2020 01:59:07 +0900</lastBuildDate>
+    
+	<atom:link href="https://git-kim.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cat</title>
+      <link>https://git-kim.github.io/categories/cat/</link>
+      <pubDate>Sun, 23 Aug 2020 01:59:07 +0900</pubDate>
+      
+      <guid>https://git-kim.github.io/categories/cat/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
