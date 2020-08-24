@@ -145,3 +145,24 @@ span.lnt {
 button {
     font-family: 'Helvetica Neue', 'Spoqa Han Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
+
+a.imgButton img {
+    display: inline;
+    border: 0px;
+    outline: none;
+    border-width: 0px;
+    outline-width: 0px;
+    border-bottom: none;
+}
+
+a.imgButton {
+    display: inline-block;
+}
+
+#shareButtons {
+    float: right;
+}
+
+#loadDisqusButton {
+    clear: both;
+}
