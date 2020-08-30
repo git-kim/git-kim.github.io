@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /about/
+Disallow: /categories/
+Disallow: /tags/
+Disallow: /search/
+Sitemap: https://git-kim.github.io/sitemap.xml

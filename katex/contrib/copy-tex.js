@@ -146,7 +146,6 @@ var katexReplaceWithTex = function katexReplaceWithTex(fragment, copyDelimiters)
 
   for (var _i = 0; _i < katexMathml.length; _i++) {
     var _element = katexMathml[_i];
-
     var texSource = _element.querySelector('annotation');
 
     if (texSource) {
@@ -183,11 +182,11 @@ document.addEventListener('copy', function (event) {
 
   var fragment = selection.getRangeAt(0).cloneContents();
 
+  
   if (!fragment.querySelector('.katex-mathml')) {
     return; // default action OK if no .katex-mathml elements
   } // Preserve usual HTML copy/paste behavior.
-
-
+  
   var html = [];
 
   for (var i = 0; i < fragment.childNodes.length; i++) {
@@ -195,8 +194,9 @@ document.addEventListener('copy', function (event) {
   }
 
   event.clipboardData.setData('text/html', html.join('')); // Rewrite plain-text version.
-
-  event.clipboardData.setData('text/plain', katex2tex(fragment).textContent); // Prevent normal copy handling.
+  
+  // event.clipboardData.setData('text/plain', katex2tex(fragment).textContent); // Prevent normal copy handling.
+  event.clipboardData.setData('text/plain', katex2tex(fragment).textContent.replace(/[^\$]*(\$+[^\$]*\$+)[^\$]*/g, '$1')); // Edited to prevent visitors from copying other parts
 
   event.preventDefault();
 });
