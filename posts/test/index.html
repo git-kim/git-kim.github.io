@@ -17,7 +17,7 @@
 				</script><script src="/katex/contrib/copy-tex.671369f68d33ef8483f4aadc66a5e9a8fb1c6d9a0bdd7276f3f828ac019b6267.js" integrity="sha256-ZxNp9o0z74SD9KrcZqXpqPscbZoL3XJ28/gorAGbYmc=" crossorigin="anonymous"></script><link rel="stylesheet" href="/katex/contrib/copy-tex.min.bf9ff4137fec38f6255419e142d0883c9c52090885d746f80eee12b273d9b3e0.css" integrity="sha256-v5/0E3/sOPYlVBnhQtCIPJxSCQiF10b4Du4SsnPZs&#43;A=" crossorigin="anonymous">
   		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/fonts.css">
-		<link rel="stylesheet" href="/css/custom.min.7ca1bdd5a80fa8c1c716755db19b9ff63acfb2ad2d64f089ee7162d77ecd12d5.css" integrity="sha256-fKG91agPqMHHFnVdsZuf9jrPsq0tZPCJ7nFi137NEtU=" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/custom.min.44be2e7a5978e123e8fc8b836b2679fa550c6be2dbc9121fe6e38b0ef281e3f5.css" integrity="sha256-RL4uell44SPo/IuDayZ5&#43;lUMa&#43;LbyRIf5uOLDvKB4/U=" crossorigin="anonymous">
 
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -123,7 +123,7 @@ abcdefghijk</p>
 			
 			
 				<button id="loadDisqusButton" onclick="loadDisqus()">Load Comments</button>
-<div id="disqus_thread"></div>
+
 <script type="text/javascript">
 let isOn = 0;
 let loadButton = document.getElementById("loadDisqusButton");
@@ -135,8 +135,10 @@ if (isOn === 0) {
     
     if (window.location.hostname == "localhost")
         return;
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'tk0';
+    let wrapper = document.createElement('div');
+    wrapper.setAttribute("id", "disqus_thread");
+    let dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    let disqus_shortname = 'tk0';
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 })();
