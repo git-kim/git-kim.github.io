@@ -34,6 +34,13 @@ docReady(function() {
       if (currentTheme === 'dark') {
           themeToggleSwitch.classList.add("checked");
       }
+    } else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: Dark)').matches;
+        if (prefersDark) {
+            themeToggleSwitch.classList.add("checked");
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
     }
     themeToggleSwitch.addEventListener("click", () => switchTheme(themeToggleSwitch));
 });
