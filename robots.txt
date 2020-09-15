@@ -1,6 +1,14 @@
 User-agent: *
 Disallow: /about/
 Disallow: /categories/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /js/
+Disallow: /katex/
+Disallow: /page/
+Disallow: /posts/
+Disallow: /svgs/
 Disallow: /tags/
 Disallow: /search/
 Sitemap: https://git-kim.github.io/sitemap.xml
