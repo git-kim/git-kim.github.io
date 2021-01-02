@@ -6,28 +6,9 @@
     <description>Recent content in Tags on T. K.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Aug 2020 01:59:07 +0900</lastBuildDate>
     
 	<atom:link href="https://git-kim.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>cat</title>
-      <link>https://git-kim.github.io/tags/cat/</link>
-      <pubDate>Sun, 23 Aug 2020 01:59:07 +0900</pubDate>
-      
-      <guid>https://git-kim.github.io/tags/cat/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dog</title>
-      <link>https://git-kim.github.io/tags/dog/</link>
-      <pubDate>Sun, 23 Aug 2020 01:59:07 +0900</pubDate>
-      
-      <guid>https://git-kim.github.io/tags/dog/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>C&#43;&#43; 스트링(string) &mdash;T. K.</title>
+		<link rel="stylesheet" href="/css/bigfoot-number.min.51de71470813d1d605ba1d09d5d829f200cd1f2ca434b63e4a8b61acf1c10d6c.css" integrity="sha256-Ud5xRwgT0dYFuh0J1dgp8gDNHyykNLY&#43;SothrPHBDWw=" crossorigin="anonymous"><link rel="stylesheet" href="/css/bigfoot-custom.min.e62675dc71a51b942c5fd7fa196dd6aeba76926e226bac781450b893bf1b75a6.css" integrity="sha256-5iZ13HGlG5QsX9f6GW3Wrrp2km4ia6x4FFC4k78bdaY=" crossorigin="anonymous">
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		<link rel="stylesheet" href="/css/custom.min.5978f60b71bfe7298d776d6591fa9edd50ba4f12a17c23ab386b428b1efbf4f4.css" integrity="sha256-WXj2C3G/5ymNd21lkfqe3VC6TxKhfCOrOGtCix779PQ=" crossorigin="anonymous">
+
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192x192.png">
+		<link rel="icon" type="image/png" sizes="256x256" href="/images/android-chrome-256x256.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="T. K." />
+		
+		<script src="/js/common.min.cc5821c13656c6a218ca2eda47234830ce794fe108cc0567ea39d55486356794.js" integrity="sha256-zFghwTZWxqIYyi7aRyNIMM55T&#43;EIzAVn6jnVVIY1Z5Q=" crossorigin="anonymous"></script>
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">T. K.</h2>
+				</a>
+				<ul>
+    <li>
+            <a href="/posts/">
+                
+                <span>Posts</span>
+                
+            </a>
+        </li><li>
+            <a href="/categories/">
+                
+                <span>Categories</span>
+                
+            </a>
+        </li><li>
+            <a href="/search/">
+                
+                <span>Search</span>
+                
+            </a>
+        </li><li><div class="theme-switch"></div></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        T. Kim
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-11-22 00:00:07 &#43;0900 KST">November 22, 2020</time>
+</div>
+
+		<h1 class="post-title">C&#43;&#43; 스트링(string)</h1>
+<div class="post-line"></div>
+
+		<h3 id="헤더-string">헤더: <code>&lt;string&gt;</code></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="주요-자료형">주요 자료형</h3>
+<h4 id="자료형과-리터럴">자료형과 리터럴</h4>
+<table>
+<thead>
+<tr>
+<th>자료형 (이름 공간: <code>std</code>)</th>
+<th>관련 스트링 리터럴 예</th>
+<th>스트링 리터럴 부호화 형식</th>
+<th>스트링 리터럴 자료형<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code><br />:= <code>basic_string&lt;char&gt;</code></td>
+<td>&quot;abc&quot;</td>
+<td>narrow encoding<br />(사용 환경마다 다름)<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></td>
+<td>const char[<em>n</em>]</td>
+</tr>
+<tr>
+<td><code>u8string</code> <sub>C++20</sub> <br />:= <code>basic_string&lt;char8_t&gt;</code></td>
+<td>u8&quot;abc&quot;</td>
+<td>UTF-8</td>
+<td>const char[<em>n</em>]<br />const char8_t[<em>n</em>] <sub>(C++20)</sub></td>
+</tr>
+<tr>
+<td><code>u16string</code> <sub>C++11</sub> <br />:= <code>basic_string&lt;char16_t&gt;</code></td>
+<td>u&quot;abc&quot;</td>
+<td>UTF-16<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></td>
+<td>const char16_t[<em>n</em>] <sub>(C++11)</sub></td>
+</tr>
+<tr>
+<td><code>u32string</code> <sub>C++11</sub> <br />:= <code>basic_string&lt;char32_t&gt;</code></td>
+<td>U&quot;abc&quot;</td>
+<td>UTF-32</td>
+<td>const char32_t[<em>n</em>] <sub>(C++11)</sub></td>
+</tr>
+<tr>
+<td><code>wstring</code><br />:= <code>basic_string&lt;wchar_t&gt;</code></td>
+<td>L&quot;abc&quot;</td>
+<td>wide encoding<br />(사용 환경마다 다름)<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></td>
+<td>const wchar_t[<em>n</em>]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>std::basic_string</code>은 순서대로 나열된 문자들을 다루거나 저장하는 데 쓰는 <strong>컨테이너</strong>(container)이자 <strong>클래스 템플릿</strong>(class template)이다.</li>
+</ul>
+<h4 id="참고-몇-가지-부호화-형식">참고: 몇 가지 부호화 형식</h4>
+<ul>
+<li>ASCII (American Standard Code for Information Interchange): 7 bits를 쓰는 부호화 형식(코드 포인트 128 개이다.)이며 한 문자는 1 byte 공간(1 bit는 전송 오류를 검사할 때 쓰는 패러티 비트(parity bit)이다.)을 차지한다.
+<ul>
+<li>Extended ASCII (EASCII): 보통 한 문자가 8 bits(즉 1 byte)를 쓰는 부호화 형식(코드 포인트 255 개)을 일컫는다. UTF-8을 일컬을 때도 있다.</li>
+</ul>
+</li>
+<li>UTF-8: 가변 길이 부호화 형식이며 코드 포인트마다 1 byte에서 4 bytes까지 공간(코드 유닛마다 1 byte 공간)을 차지한다. ASCII 문자 하나는 1 byte 공간을 차지하며 한글 한 자는 3 bytes 공간을 차지하고 그림 문자 하나는 4 bytes 공간을 차지한다. &quot;가나다라마바사아&quot;라는 문자열 리터럴은 24 코드 유닛(8 코드 포인트)이므로 <em>n</em>이 25인 <code>const char8_t</code> 문자열(널 문자도 담아야 한다.)에 담길 수 있다. &quot;😊&quot;라는 문자열 리터럴은 4 코드 유닛(1 코드 포인트)이므로 <em>n</em>이 5인 <code>const char8_t</code> 문자열에 담길 수 있다.</li>
+<li>UTF-16: 가변 길이 부호화 형식이며 코드 포인트가 한두 코드 유닛(코드 유닛마다 2 bytes 공간을 차지한다.)으로 구성된다. 다국어 기본 평면에 속하는 영문자, 한글 등은 2 bytes 공간을 차지하지만 다국어 보조 평면에 속하여 surrogate pair로 표현되는 그림 문자는 4 bytes 공간을 차지한다. &quot;가나다라마바사아&quot;라는 문자열 리터럴은 8 코드 유닛(8 코드 포인트)이므로 <em>n</em>이 9인 <code>const char16_t</code> 문자열(널 문자도 담아야 한다.)에 담길 수 있다. &quot;😊&quot;라는 문자열 리터럴은 2 코드 유닛(1 코드 포인트)이므로 <em>n</em>이 3인 <code>const char16_t</code> 문자열에 담길 수 있다.</li>
+<li>UTF-32: 고정 길이 부호화 형식이며 코드 포인트마다 4 bytes 공간(코드 유닛마다 4 bytes 공간)을 차지한다. &quot;가나다라마바사아&quot;라는 문자열 리터럴은 8 코드 유닛(8 코드 포인트)이므로 <em>n</em>이 9인 <code>const char32_t</code> 문자열(널 문자도 담아야 한다.)에 담길 수 있다. &quot;😊&quot;라는 문자열 리터럴은 1 코드 유닛(1 코드 포인트)이므로 <em>n</em>이 2인 <code>const char32_t</code> 문자열에 담길 수 있다.</li>
+</ul>
+<h3 id="주요-연산자함수">주요 연산자·함수</h3>
+<p>이름 공간 <code>std::basic_string&lt;CharT,Traits,Allocator&gt;</code>에 속하는 연산자·함수를 '멤버'로 분류하면 아래와 같은 연산자·함수들이 있다.</p>
+<h4 id="연산자">연산자</h4>
+<table>
+<thead>
+<tr>
+<th align="left">비멤버 연산자</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>+</code></td>
+<td align="left">두 스트링을 연결하거나 스트링과 문자를 연결할 때 쓴다. 연결된 스트링이 반환된다.</td>
+</tr>
+<tr>
+<td align="left"><code>==</code></td>
+<td align="left">두 스트링이 사전식으로 비교되어 두 스트링이 같으면 <code>true</code>가 같지 않으면 <code>false</code>가 반환된다.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></td>
+</tr>
+<tr>
+<td align="left"><code>&lt;=&gt; </code><sub>C++20</sub></td>
+<td align="left">두 스트링이 사전식으로 비교되어 정수 리터럴 <code>0</code>과 비교될 수 있는 값 하나가 반환된다.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></td>
+</tr>
+<tr>
+<td align="left"><code>&quot;&quot;s</code></td>
+<td align="left">문자열 리터럴이 요구되는 자료형에 맞는 스트링 리터럴로 변하여 반환된다. 문자열 리터럴에 널 문자를 포함할 수 있다.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> <strong>특정 이름 공간</strong>을 사용함으로써 이 연산자를 쓸 수 있다.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></td>
+</tr>
+<tr>
+<td align="left"><code>&lt;&lt;</code></td>
+<td align="left">스트링 변수에 저장된 스트링을 출력할 때 쓴다. 출력 스트림이 반환된다.</td>
+</tr>
+<tr>
+<td align="left"><code>&gt;&gt;</code></td>
+<td align="left">스트링을 스트링 변수에 저장할 때 쓴다. 입력 스트림이 반환된다.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>문자열 리터럴끼리 연결할 때에는 연산자가 없어도 되지만(예: <code>&quot;Hello &quot;&quot;World!&quot;</code>) 스트링 변수끼리 연결할 때나 스트링 변수와 문자열 리터럴을 연결할 때에는 연산자(+)가 필요하다. 숫자 리터럴·변수와 문자열 리터럴을 연결하려면 <code>std::to_string</code> 함수를 숫자 리터럴·변수에 써야 한다(<a href="https://www.techiedelight.com/concatenate-integer-string-object-cpp/" target="_blank" rel="noopener">다른 방법</a>도 물론 있다.). 문자열 리터럴이 문자열 주소를 반환하기 때문에 <code>std::cout &lt;&lt; &quot;Hello, Hero&quot; + 7;</code>처럼 쓰면 <code>Hero</code>만 출력된다.</li>
+<li>필자는 '사전식 비교'를 잘못된 표현이라고 본다. 필자가 쓰는 컴파일러를 기준으로 &quot;B&quot;가 &quot;a&quot;보다 작은 것만 봐도 '사전식 비교'는 아니다. 해당 부호화 방식을 기준으로 첫 문자부터 코드 포인트마다 코드(부호)를 비교한다고 표현하는 편이 낫지 않을까 한다. 컴파일러가 UTF-8을 부호화 형식으로 하고 ASCII 코드 문자만이 있는 스트링이 비교된다면 각 문자에 해당하는 ASCII 코드가 비교된다고 볼 수 있다. 이렇게 생각하면 &quot;B&quot;(B의 ASCII 코드: 66)가 &quot;a&quot;(a의 ASCII 코드: 97)보다 작은 것이 이해가 된다.</li>
+<li>C++20에서 비교 연산자를 다룰 때 알아 둘 점이 있다.
+<ol>
+<li>동일 여부를 비교하는 연산자 중 일차(primary) 연산자는 <code>==</code>이고 부차(secondary) 연산자는 <code>!=</code>이다.</li>
+<li>크기 비교 연산자 중 일차(primary) 연산자는 <code>&lt;=&gt;</code>이고 부차(secondary) 연산자는 <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>이다.</li>
+<li>일차 연산자를 정의하였으면 부차 연산자는 정의할 필요가 없다.</li>
+<li>일차 연산자에 한하여 연산자 앞뒤에 오는 값의 순서가 바뀌어도 된다. 예를 들어 <code>a == 1</code>에 쓸 수 있는 <code>==</code> 연산자를 정의하였다면 그 정의만으로 <code>1 == a</code> 연산이 가능하다.</li>
+<li>이차 연산자를 정의하면 이차 연산자가 일차 연산자를 '이긴다'. 예를 들어 <code>==</code> 연산자와 <code>!=</code> 연산자를 둘 다 정의하면 <code>a != b</code>는 <code>!a.operator==(b)</code>나 <code>!b.operator==(a)</code>가 아니라 <code>a.operator!=(b)</code>로 해석된다.</li>
+<li><code>&lt;=&gt;</code> 연산자를 default로 정의하였으면 <code>==</code> 연산자 정의를 명시하지 않아도 <code>==</code> 연산자가 default로 정의된다.</li>
+<li><code>&lt;=&gt;</code> 연산자를 정의하였으나 default로 정의하지 않았으면  <code>==</code> 연산자는 저절로 정의되지 않는다.</li>
+<li><code>&lt;=&gt;</code> 연산자 반환 자료형(<code>auto</code>로 지정하여도 된다.)은 <code>strong_ordering</code> 또는 <code>weak_ordering</code>, <code>partial_ordering</code>이며, <code>==</code> 연산자 반환 자료형은 당연히 <code>bool</code>이다.</li>
+</ol>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>멤버 연산자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[]</code></td>
+<td>특정 위치에 있는 문자를 가리키는 참조자가 반환된다. 참조자가 반환되므로 해당 위치 문자를 다른 문자로 변경할 수 있다. 소속 이름 공간은 <code>std::basic_string&lt;CharT, Traits, Allocator&gt;</code>이다.</td>
+</tr>
+<tr>
+<td><code>+=</code></td>
+<td>스트링 끝에 문자나 문자들을 붙일 때 쓴다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="입출력연산자-제외">입출력(연산자 제외)</h4>
+<table>
+<thead>
+<tr>
+<th>비멤버 함수<br />(이름 공간: <code>std</code>)</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getline</code></td>
+<td>스트링 변수에 저장할 문자들을 구분자 직전까지 한 단위로 입력받을 때, 아니면 <code>std::istrigstream</code> 변수에 저장된 스트링에서 구분자 직전까지 있는 문자들을 한 단위로 이용하려고 할 때 쓴다. <code>for</code> 문 조건식으로서 자리할 수 있는 함수다. 매개 변수는 문자 입력 스트림, 한 단위가 저장되는 스트링 변수, 구분자(delimiter)(생략 가능)이며, 기본 구분자는 개행 문자이다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="수-변환">수 변환</h4>
+<table>
+<thead>
+<tr>
+<th>비멤버 함수<br />(이름 공간: <code>std</code>)</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stoi</code>, <code>stol</code>, <code>stoll</code></td>
+<td>내부에 숫자만 있거나 공백 문자를 제외하고 숫자가 먼저 나오는 스트링(여기서는 '스트링 숫자'라고 하겠다.)을 부호 있는 정수(signed integer) 값으로 변환할 때 쓴다. stoi, stol, stoll은 a string to an int, a string to a long, a string to a long long이라고 이해하면 쉽다. stoi나 stol이나 strtol 또는 wcstol 함수를 호출한다는 점에서 같다. stoll은 strtoll 또는 wcstoll을 호출한다. 스트링 숫자는 실수여도 되며(어차피 소수점 뒤는 무시된다.) 앞에 +, -가 붙어 있어도 된다. 스트링 숫자에 대응되는 정수 값이 반환된다. 매개 변수는 변환 대상 스트링, <code>std::size_t</code>형 변수 주소(정수로 변환된 문자 수가 지정한 변수에 저장된다.), 진법을 나타내는 수(base)이다. 변환된 문자 수를 알 필요가 없다면 두 번째 인수를 지정하지 않거나(세 번째 인수를 쓰지 않을 때에만 지정하지 않을 수 있다.) 0(기본값), nullptr로 지정할 수 있으며 스트링에 있는 숫자가 10진수가 아니라 16진수거나 8진수이면 세 번째 인수를 각각 16, 8로 지정하면 된다. 세 번째 인수를 0이나 8로 하면 0이 앞에 붙은 스트링 숫자는 8진수로 해석되고 0이나 16으로 하면 0x나 0X가 앞에 붙은 스트링 숫자는 16진수로 해석된다.</td>
+</tr>
+<tr>
+<td><code>stoul</code>, <code>stoull</code></td>
+<td>스트링 숫자를 부호 없는 정수(unsigned integer) 값으로 변환할 때 쓴다. (반환형, 매개 변수 설명은 생략한다.)</td>
+</tr>
+<tr>
+<td><code>stof</code>, <code>stod</code>, <code>stold</code></td>
+<td>스트링 숫자를 실수 값으로 변환할 때 쓴다. stof는 strtof 또는 wcstof를 호출한다.... 매개 변수는 변환 대상 스트링과 <code>std::size_t</code>형 변수 주소만 있다. 스트링 숫자가 될 수 있는 문자열 예로는 &quot;+1.1E+10&quot;, &quot;-0x0.3p10&quot;, &quot;-INF&quot;, &quot;NAN&quot; 등이 있으며 대소문자는 중요하지 않다.</td>
+</tr>
+<tr>
+<td><code>to_string</code>, <code>to_wstring</code></td>
+<td>숫자 값을 각각 <code>std::string</code>, <code>std::wstring</code> 스트링으로 변환할 때 쓴다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="범위-접근">범위 접근</h4>
+<table>
+<thead>
+<tr>
+<th>비멤버 함수<br />(이름 공간: <code>std</code>)</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>begin</code> <sub>C++11</sub> <br /><code>cbegin</code> <sub>C++14</sub></td>
+<td>매개 변수 스트링의 첫 요소(문자)를 가리키는 반복자(iterator)가 반환된다. 반복자를 쓰면서 요소를 변경하지 않으려면 <code>cbegin</code>을 쓰는 편이 좋다.</td>
+</tr>
+<tr>
+<td><code>end</code> <sub>C++11</sub> <br /><code>cend</code> <sub>C++14</sub></td>
+<td>매개 변수 스트링의 스트링 끝 요소 다음 요소를 가리키는 반복자가 반환된다.</td>
+</tr>
+<tr>
+<td><code>rbegin</code>, <code>crbegin</code> <sub>C++14</sub></td>
+<td>매개 변수 스트링의, 뒤에서 첫 요소를 가리키는 반복자가 반환된다.</td>
+</tr>
+<tr>
+<td><code>rend</code>, <code>crend</code> <sub>C++14</sub></td>
+<td>매개 변수 스트링의, 뒤에서 끝 요소 다음 요소를 가리키는 반복자가 반환된다.</td>
+</tr>
+<tr>
+<td><code>size</code> <sub>C++17</sub> <br /><code>ssize</code> <sub>C++20</sub></td>
+<td>매개 변수 스트링의 크기가 바이트 수로 반환된다. ssize는 부호가 있는 크기(signed size)를 뜻한다.</td>
+</tr>
+<tr>
+<td><code>empty</code> <sub>C++17</sub></td>
+<td>매개 변수 스트링이 비어 있으면 <code>true</code>가 반환된다.</td>
+</tr>
+<tr>
+<td><code>data</code> <sub>C++17</sub></td>
+<td>매개 변수 스트링의 요소들(문자들)이 담겨 있는 메모리 블록의 <strong>주소</strong>가 반환된다.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>반복자는 멤버 변수에 컨테이너·배열 요소 주소가 저장되는 객체이다. 포인터 변수를 다루듯이 역참조를 할 수 있지만(반복자를 역참조하면 현재 반복자가 가리키는 요소가 반환된다.) 반복자만의 멤버 함수가 있다는 점에서 반복자는 포인터 변수와 다르다.</li>
+<li>스트링 변수에 저장한 문자열 리터럴을 문자열로 복사할 때 아래 예처럼 <code>std::data</code>를 쓸 수 있다.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstring&gt; // strcpy</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="p">{</span><span class="s">&#34;Hello!&#34;</span><span class="p">};</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">;</span> <span class="c1">// 출력: Hello!
+</span><span class="c1"></span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">data</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="c1">// 출력: Hello!
+</span><span class="c1"></span>    <span class="kt">char</span> <span class="n">cstr</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">cstr</span><span class="p">,</span> <span class="n">data</span><span class="p">(</span><span class="n">s</span><span class="p">));</span> <span class="c1">// data(s) 대신에 s나 &amp;s가 올 수 없다. cstr = s;도 안 된다.
+</span><span class="c1"></span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">cstr</span><span class="p">;</span> <span class="c1">// 출력: Hello!
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="요소-접근연산자-제외">요소 접근(연산자 제외)</h4>
+<table>
+<thead>
+<tr>
+<th>멤버 함수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>at</code></td>
+<td>특정 위치에 있는 문자를 가리키는 참조자가 반환된다. 참조자가 반환되므로 해당 위치 문자를 다른 문자로 변경할 수 있다. 용례: <code>std::cout &lt;&lt; str.at(1);</code> <code>str.at(2) = 'B';</code></td>
+</tr>
+<tr>
+<td><code>front</code> <sub>C++11</sub></td>
+<td>스트링 첫 문자를 가리키는 참조자가 반환된다. <code>s.front()</code>는 <code>s[0]</code> 또는 <code>s.at(0)</code>과 동일한 기능을 한다.</td>
+</tr>
+<tr>
+<td><code>back</code> <sub>C++11</sub></td>
+<td>스트링 끝 문자를 가리키는 참조자가 반환된다. <code>s.back()</code>는 <code>s[s.size() - 1]</code> 또는 <code>s.at(s.size() - 1)</code>과 동일한 기능을 한다.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>스트링의 요소들(문자들)이 담겨 있는 배열을 가리키는 <strong>포인터</strong>가 반환된다. 스트링 이름이 <code>s</code>일 때 문자들은 <code>s.data()</code>가 가리키는 곳부터 <code>s.data() + s.size()</code>가 가리키는 곳까지 담겨 있다. <code>s.data() + s.size()</code>가 가리키는 곳에 있는 문자는 널 문자이므로 <code>*(s.data() + s.size())</code>는 <code>0</code>과 같다.</td>
+</tr>
+<tr>
+<td><code>c_str</code></td>
+<td>C+11부터 <code>data</code>와 동일한 기능을 하는 함수이다. 스트링 이름이 <code>s</code>일 때 <code>*(s.c_str() + s.size())</code>는 <code>0</code>과 같다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="반복자">반복자</h4>
+<table>
+<thead>
+<tr>
+<th>멤버 함수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>begin</code>, <code>cbegin</code> <sub>C++11</sub></td>
+<td>스트링의 첫 문자를 가리키는 반복자(iterator)가 반환된다. 스트링에 담긴 문자를 다른 문자로 변경하지 않으려면 <code>cbegin</code>을 쓰는 편이 좋다. C++17부터 <code>std::as_const</code>를 쓸 수 있으니 스트링 이름이 <code>s</code>일 때 <code>std::as_const(s).begin()</code>과 <code>s.cbegin()</code>은 동일한 기능을 한다고 볼 수 있다.</td>
+</tr>
+<tr>
+<td><code>end</code>, <code>cend</code> <sub>C++11</sub></td>
+<td>스트링의 끝 문자 다음 문자를 가리키는 반복자가 반환된다. 이름이 <code>s</code>인 스트링에 &quot;abc&quot;를 담았다면 <code>*(s.end() - 1)</code>은 <code>c</code>와 같다.</td>
+</tr>
+<tr>
+<td><code>rbegin</code>, <code>crbegin</code> <sub>C++11</sub></td>
+<td>스트링의, 뒤에서 첫 문자를 가리키는 반복자가 반환된다. 이름이 <code>s</code>인 스트링에 &quot;abc&quot;를 담았다면 <code>*s.rbegin()</code>은 <code>c</code>와 같다.</td>
+</tr>
+<tr>
+<td><code>rend</code>, <code>crend</code> <sub>C++11</sub></td>
+<td>스트링의, 뒤에서 끝 문자 다음 문자를 가리키는 반복자가 반환된다. 이름이 <code>s</code>인 스트링에 &quot;abc&quot;를 담았다면 <code>*(s.rend() - 1)</code>은 <code>a</code>와 같다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="용량">용량</h4>
+<table>
+<thead>
+<tr>
+<th>멤버 함수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>empty</code></td>
+<td>스트링 변수가 비어 있으면 <code>true</code>가, 비어 있지 않으면 <code>false</code>가 반환된다. 스트링 변수 <code>s</code>가 비어 있으면 <code>s.begin()</code>과 <code>s.end()</code>가 같다.</td>
+</tr>
+<tr>
+<td><code>size</code>, <code>length</code></td>
+<td>스트링의 코드 유닛 수(CharT 요소 수)가 반환된다. <code>size</code>와 <code>length</code>는 동의어이다.</td>
+</tr>
+<tr>
+<td><code>max_size</code></td>
+<td>스트링 변수에 담을 수 있는 최대 문자 개수가 반환된다. <code>s.max_size()</code>처럼 쓴다.</td>
+</tr>
+<tr>
+<td><code>capacity</code></td>
+<td>스트링 변수에 현재 할당되어 있는 공간이 문자 개수로 반환된다.</td>
+</tr>
+<tr>
+<td><code>shrink_to_fit</code></td>
+<td>스트링 변수가 실제로 쓰지 않는 공간을 제거하려고 할 때 쓴다. 예를 들어 이름이 <code>s</code>인 스트링이 있으면 <code>s.capacity()</code>가 <code>s.size()</code>로 줄이려고 할 때 <code>s.shrink_to_fit()</code>을 쓴다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="연산연산자-제외">연산(연산자 제외)</h4>
+<table>
+<thead>
+<tr>
+<th>비멤버 함수<br />(이름 공간: <code>std</code>)</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>swap</code></td>
+<td>스트링 내용을 서로 교환할 때 쓴다. <code>swap(lhs, rhs)</code>는 <code>lhs.swap(rhs)</code>와 동일한 기능을 한다.</td>
+</tr>
+<tr>
+<td><code>erase</code>, <code>erase_if</code> <sub>C++20</sub></td>
+<td>스트링에서 특정 조건을 만족하는 문자나 문자들을 삭제할 때 쓴다. 삭제된 문자 수가 반환된다.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>멤버 함수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>swap</code></td>
+<td>스트링 내용을 서로 교환할 때 쓴다. <code>lhs.swap(rhs)</code>는 <code>swap(lhs, rhs)</code>와 동일한 기능을 한다.</td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>스트링에 담긴 문자를 전부 제거할 때 쓴다. 이 함수를 쓰더라도 스트링 변수에 할당된 메모리 공간(capacity)이 줄지 않는다.</td>
+</tr>
+<tr>
+<td><code>insert</code></td>
+<td>스트링에 문자를(문자들을) 삽입할 때 쓴다.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></td>
+</tr>
+<tr>
+<td><code>erase</code></td>
+<td>스트링에서 문자를(문자들을) 제거할 때 쓴다. 인수에 숫자 리터럴을 쓸 수도 있지만 인수에 <code>&lt;algorithm&gt;</code>에 정의되어 있는 <code>find</code> 함수를 쓰거나  <code>std::basic_string</code> 멤버인 <code>find</code> 함수를 쓸 수도 있다.</td>
+</tr>
+<tr>
+<td><code>push_back</code></td>
+<td>스트링 끝에 문자 하나를 붙일 때 쓴다.</td>
+</tr>
+<tr>
+<td><code>pop_back</code> <sub>C++11</sub></td>
+<td>스트링 끝 문자 하나를 제거할 때 쓴다. 스트링 이름이 <code>s</code>라면 <code>s.pop_back()</code>은 <code>s.erase(s.end() - 1)</code>과 동일한 기능을 한다.</td>
+</tr>
+<tr>
+<td><code>append</code></td>
+<td>스트링 끝에 문자를 하나 이상 붙일 때 쓴다.<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></td>
+</tr>
+<tr>
+<td><code>compare</code></td>
+<td>두 문자 시퀀스를 비교할 때 쓴다.<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></td>
+</tr>
+<tr>
+<td><code>starts_with</code> <sub>C++20</sub></td>
+<td>첫 번째 인수로 주어진 스트링이 두 번째 인수로 주어진 스트링 뷰(string view), 또는 문자, 스트링으로 시작하는지 검사할 때 쓴다. 반환형은 <code>bool</code>이다.</td>
+</tr>
+<tr>
+<td><code>ends_with</code> <sub>C++20</sub></td>
+<td>첫 번째 인수로 주어진 스트링이 두 번째 인수로 주어진 스트링 뷰(string view), 또는 문자, 스트링으로 끝나는지 검사할 때 쓴다. 반환형은 <code>bool</code>이다.</td>
+</tr>
+<tr>
+<td><code>contains</code> <sub>C++23</sub></td>
+<td>첫 번째 인수로 주어진 스트링이 두 번째 인수로 주어진 스트링 뷰(string view), 또는 문자, 스트링을 포함하는지 검사할 때 쓴다. 반환형은 <code>bool</code>이다.</td>
+</tr>
+<tr>
+<td><code>replace</code></td>
+<td>인수들로 주어진 범위에 해당하는 스트링 부분을 다른 인수에 있는 문자나 문자들로 변경할 때 쓴다.</td>
+</tr>
+<tr>
+<td><code>substr</code></td>
+<td>인수로 주어진 위치부터 스트링 끝까지나 인수들로 주어진 범위에 해당하는 스트링 부분이 반환된다.</td>
+</tr>
+<tr>
+<td><code>copy</code></td>
+<td>스트링 부분을 다른 스트링에 복사하여 넣을 때 쓴다. 복사된 문자 개수가 반환된다.</td>
+</tr>
+<tr>
+<td><code>resize</code></td>
+<td>스트링이 담을 수 있는 문자 개수가 주어진 인수가 되도록 스트링 크기를 조절할 때 쓴다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="탐색">탐색</h4>
+<table>
+<thead>
+<tr>
+<th>멤버 함수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>find</code></td>
+<td>스트링에서 특정 문자나 특정 문자열이 있는 최초 위치를 찾을 때 쓴다. 스트링에 해당 문자·문자열이 있으면 그 문자·문자열이 있는 최초 위치가, 없으면 부호 있는 값으로 변환하였을 때 -1인 <code>npos</code>(즉 부호 없는 정수형 변수가 저장할 수 있는 최댓값)가 반환된다.</td>
+</tr>
+<tr>
+<td><code>rfind</code></td>
+<td>스트링에서 특정 문자나 특정 문자열이 있는 최종 위치를 찾을 때 쓴다.</td>
+</tr>
+<tr>
+<td><code>find_first_of</code></td>
+<td>스트링에서 특정 문자가 있거나 특정 문자열을 구성하는 문자가 하나라도 있는 최초 위치를 찾을 때 쓴다.</td>
+</tr>
+<tr>
+<td><code>find_first_not_of</code></td>
+<td>스트링에서 특정 문자가 없거나 특정 문자열을 구성하는 문자가 없는 최초 위치를 찾을 때 쓴다.</td>
+</tr>
+<tr>
+<td><code>find_last_of</code></td>
+<td>스트링에서 특정 문자가 있거나 특정 문자열을 구성하는 문자가 하나라도 있는 최종 위치를 찾을 때 쓴다.</td>
+</tr>
+<tr>
+<td><code>find_last_not_of</code></td>
+<td>스트링에서 특정 문자나 특정 문자열을 구성하는 문자가 없는 최종 위치를 찾을 때 쓴다.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="참조">참조</h2>
+<p><a href="https://en.cppreference.com/w/" target="_blank" rel="noopener">cppreference.com</a></p>
+<p><a href="https://ducmanhphan.github.io/2018-12-06-How-to-use-char-wchar_t-char16_t-char32_t-right-a-way-in-C&#43;&#43;/" target="_blank" rel="noopener">How to use char, wchar_t, char16_t and char32_t right a way in C++</a></p>
+<p><a href="https://unicodebook.readthedocs.io/unicode_encodings.html" target="_blank" rel="noopener">Programming with Unicode</a></p>
+<p><a href="https://devblogs.microsoft.com/cppblog/simplify-your-code-with-rocket-science-c20s-spaceship-operator/" target="_blank" rel="noopener">Simplify Your Code With Rocket Science: C++20’s Spaceship Operator</a></p>
+<p><a href="https://docs.microsoft.com/en-us/cpp/cpp/data-type-ranges?view=msvc-160" target="_blank" rel="noopener">Data Type Ranges</a></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>스트링 리터럴 끝에 붙는 널 문자(null terminator)를 포함하였을 때 스트링 리터럴의 크기는 <em>n</em> 코드 유닛이다. 스트링 리터럴 자료형을 보면 <strong>C 언어처럼</strong> 문자열(character array)로 스트링이 저장됨을 알 수 있다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>어떤 컴파일러(compiler)에서는 UTF-8이 쓰일 터이고 다른 컴파일러에서는 다른 부호화 형식이 쓰일 터이다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>윈도즈(Windows /ˈwɪndoʊz/) 사용자는 UTF-16을 가리키는 데에 유니코드(Unicode)라는 용어를 쓰기도 한다. 그러나 유니코드(Unicode)는 문자 부호화·표시·처리 목적으로 Unicode Consortium이 관리하는 IT(정보 기술) 표준이며 UTF는 Unicode Transformation Format(유니코드 변환 형식)의 두문자어다. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>윈도즈 컴파일러에서는 16-bit 부호화 형식(윈도즈 Me까지 UCS-2, 윈도즈 2000부터 UTF-16), 리눅스(Linux /ˈlɪnʊks/) 컴파일러에서는 32-bit 부호화 형식(UCS-4)이 쓰이는 편이라고 한다. UCS-4는 UTF-32와 같다고 볼 수 있지만, UCS-2는 UTF-16과는 다르게 surrogate pairs 사용을 지원하지 않는다. Surrogate pair 하나(총 4 bytes)는 다국어 기본 평면(basic multilingual plane, BMP)을 벗어나는 문자 하나를 표현한다. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><code>!=</code> 연산자 정의는 C++20에 기본으로 존재하지 않는다. 그렇지만 이 말은 코드에 <code>a != b</code> 같은 내용을 적으면 안 된다는 말도 아니고 <code>!=</code> 연산자를 프로그래머가 정의할 수 없다는 말도 아니다. <code>!=</code> 연산자 정의가 따로 없으면 <code>a != b</code>가 <code>!(a == b)</code>로 해석될 뿐이다. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p><code>&lt;=&gt;</code>는 우주선 연산자(spaceship operator)로 불린다. C++20 <code>std::strong_ordering</code> 클래스 또는 동종 클래스에 있는 정적 공용 멤버 상수(public static member constant)가 정수 리터럴 <code>0</code>과 비교될 수 있다. 이 상수(less, greater, equivalent 등)와 정수 리터럴 <code>0</code>를 비교하는 연산(<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> 연산자를 썼을 때에만)에서 true나 false가 반환된다. 이 둘을 대상으로 하지 않는 <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> 연산자(크기 비교 연산자)의 정의는 C++20에 기본으로 존재하지 않는다. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p>예를 들어 <code>std:string s = &quot;a\0b&quot;;</code>와 <code>std:string s = &quot;a\0b&quot;s;</code>는 다르다. 전자를 쓰면 <code>s.size()</code>가 1을 반환하며 <code>s</code>를 출력하였을 때 <code>a</code>만 나오지만, 후자를 쓰면 <code>s.size()</code>가 3을 반환하고 <code>s</code>를 출력하였을 때 <code>ab</code>가 나온다. <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8" role="doc-endnote">
+<p><code>using namespace std::literals</code>나 <code>using namespace std::string_literals</code>, 아니면 <code>using namespace std::literals::string_literals</code>을 쓰면 된다. <a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9" role="doc-endnote">
+<p>매개 변수 조합이 다양하므로 <a href="https://en.cppreference.com/w/cpp/string/basic_string/insert" target="_blank" rel="noopener">용례</a>를 참고할 필요가 있다. <a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10" role="doc-endnote">
+<p>인수로 쓸 수 있는 것들이 많으므로 <a href="https://en.cppreference.com/w/cpp/string/basic_string/append" target="_blank" rel="noopener">용례</a>를 참고할 필요가 있다. <a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11" role="doc-endnote">
+<p><a href="https://en.cppreference.com/w/cpp/string/basic_string/compare" target="_blank" rel="noopener">용례</a>를 참고할 필요가 있다. <a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+		<div id="taxonomies"></div>
+<div class="emptyLine"></div>
+			
+			
+				<button id="loadDisqusButton" onclick="loadDisqus()">Load Comments</button>
+
+<script type="text/javascript">
+let isOn = 0;
+let loadButton = document.getElementById("loadDisqusButton");
+
+function loadDisqus() {
+if (isOn === 0) {
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+    let wrapper = document.createElement('div');
+    wrapper.setAttribute("id", "disqus_thread");
+    wrapper.async = true;
+    document.getElementById('loadDisqusButton').insertAdjacentElement('afterend', wrapper);
+    let dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    let disqus_shortname = 'tk0';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+isOn = 1;
+loadButton.style.display = "none";
+};
+};
+</script>
+<noscript>
+    Please enable JavaScript to view the 
+    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+    </a>
+</noscript>
+
+			
+	</div>
+
+	<div class="pagination">
+
+		<a href="/posts/c&#43;&#43;-%EC%95%A8%EA%B1%B0%EB%A6%AC%EB%93%ACalgorithm/" class="right arrow">&#8594;</a>
+		
+	</div>
+</main>
+
+
+        <script src="/js/jquery.min.f7f6a5894f1d19ddad6fa392b2ece2c5e578cbf7da4ea805b6885eb6985b6e3d.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="/js/bigfoot_callrightaway.387acf7612f2609f22f980caef353bc3b8f020482b457ece3e6fff5fc9104308.js" integrity="sha256-OHrPdhLyYJ8i&#43;YDK7zU7w7jwIEgrRX7OPm//X8kQQwg=" crossorigin="anonymous"></script>
+			
+		
+		<a id="backtoTopButton" title="Back to top" href="#">↑</a>
+		<footer>
+			<span>
+			<a href="/about/">About</a> | <a href="/privacy/">Privacy Policy</a> | &copy; <time>2021</time> T. Kim. Made with <a href='https://gohugo.io'>Hugo</a> using a modified <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+    </body>
+</html>
