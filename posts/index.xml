@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on T. K.</title>
-    <link>https://git-kim.github.io/posts/</link>
+    <link>/posts/</link>
     <description>Recent content in Posts on T. K.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Nov 2020 22:00:03 +0900</lastBuildDate>
     
-	<atom:link href="https://git-kim.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>C&#43;&#43; 앨거리듬(algorithm)</title>
-      <link>https://git-kim.github.io/posts/c&#43;&#43;-%EC%95%A8%EA%B1%B0%EB%A6%AC%EB%93%ACalgorithm/</link>
+      <link>/posts/c&#43;&#43;-%EC%95%A8%EA%B1%B0%EB%A6%AC%EB%93%ACalgorithm/</link>
       <pubDate>Mon, 23 Nov 2020 22:00:03 +0900</pubDate>
       
-      <guid>https://git-kim.github.io/posts/c&#43;&#43;-%EC%95%A8%EA%B1%B0%EB%A6%AC%EB%93%ACalgorithm/</guid>
+      <guid>/posts/c&#43;&#43;-%EC%95%A8%EA%B1%B0%EB%A6%AC%EB%93%ACalgorithm/</guid>
       <description>C++ algorithm 자습용 기록. 최근 수정: 2021년 1월 2일.</description>
     </item>
     
     <item>
       <title>C&#43;&#43; 스트링(string)</title>
-      <link>https://git-kim.github.io/posts/c&#43;&#43;-%EC%8A%A4%ED%8A%B8%EB%A7%81string/</link>
+      <link>/posts/c&#43;&#43;-%EC%8A%A4%ED%8A%B8%EB%A7%81string/</link>
       <pubDate>Sun, 22 Nov 2020 00:00:07 +0900</pubDate>
       
-      <guid>https://git-kim.github.io/posts/c&#43;&#43;-%EC%8A%A4%ED%8A%B8%EB%A7%81string/</guid>
+      <guid>/posts/c&#43;&#43;-%EC%8A%A4%ED%8A%B8%EB%A7%81string/</guid>
       <description>C++ string 자습용 기록. 최근 수정: 2021년 1월 1일.</description>
     </item>
     
